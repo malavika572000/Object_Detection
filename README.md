@@ -1,1 +1,7 @@
-# Object_Detection
+# Object Detection
+
+The object detection in the image is performed using color-based segmentation and contour analysis. It begins by converting the image from the BGR color space to the HSV color space, which separates the intensity and color information. Color ranges are then defined for three objects of interest: mobiles, blue pens, and notebooks. Masks are created for each object based on the specified color ranges using the cv2.inRange function. To enhance object detection, morphological operations, specifically opening operations, are applied to each mask through a custom function called apply_morphology.
+
+Contour detection is employed to identify the boundaries of the objects in each binary mask using cv2.findContours. The code then filters the contours based on their area and aspect ratio, ignoring those that do not meet specific criteria. Bounding rectangles are drawn around the filtered contours, representing the approximate locations of the detected objects.
+
+The code includes constants for adjusting the minimum contour areas for mobiles, pens, and notebooks, as well as a maximum aspect ratio to filter out undesirable contours. The counts of detected mobiles, pens, and notebooks are initialized, and lists are created to store labels for each category. Bounding boxes are drawn around the detected objects, and labels are added to these boxes, indicating whether they represent mobiles, pens, or notebooks. The final image is displayed with the bounding boxes and labels, and the counts of each detected category are shown on the image. Overall, this methodology combines color-based segmentation, morphological operations, and contour analysis to accurately identify and label specific objects in the given image.
